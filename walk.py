@@ -2,13 +2,8 @@ from IntLit import IntLit
 from Var import Var
 from Definition import Definition
 from ValueExpression import ValueExpression
+from Helpers import *
 import os
-
-def isIntLit(name):
-	return name.isdigit()
-
-def isDefinition(name):
-	return name[0] == ':'
 
 def walk(root, expressions):
 	for child in os.listdir(root):
@@ -17,6 +12,8 @@ def walk(root, expressions):
 			expressions.append(IntLit(fullpath))
 		elif isDefinition(child):
 			expressions.append(Definition(fullpath))
+		elif isValueExpression(child):
+			expressions.append(ValueExpression(fullpath))
 
 def main():
 	root = "./test"
