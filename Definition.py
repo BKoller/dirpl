@@ -1,4 +1,5 @@
 from Helpers import *
+from ValueExpression import ValueExpression
 import os
 
 class Definition:
@@ -12,15 +13,18 @@ class Definition:
 	def walk(self):
 		child = os.listdir(self.path)[0]
 		if isIntLit(child):
-			code = str(IntLit(fullpath))
+			self.body = IntLit(fullpath)
 		elif isValueExpression(child):
-			code = str(ValueExpression(fullpath))
+			self.body = ValueExpression(fullpath)
 		elif isFuncCall(child):
-			code = str(FuncCall(fullpath))
-
-
+			self.body = FuncCall(fullpath)
+		elif isVar(child):
+			self.body = Var(fullpath)
 
 	def __str__(self):
-		code = 'def ' + self.name + ':\n'
+		code = 'def ' + self.name
+		code += '(' + ','.join(self.formals) + '): '
+		code += 'return '
+		code += str(self.body)
 
 		return code
