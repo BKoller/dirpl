@@ -1,38 +1,22 @@
+from IntLit import IntLit
+from Var import Var
+from Definition import Definition
+from ValueExpression import ValueExpression
 import os
 
-class Definition:
-	def __init__(self, dirname):
-		self.dirname = dirname
-		parts = dirname.split('_')
-		self.name = parts[0].lstrip(':')
-		self.formals = parts[1:]
+def isIntLit(name):
+	return name.isdigit()
 
-	def walk(self):
-		...
-
-	def __str__(self):
-		code = 'def ' + self.name + ':\n'
-
-		return code
-
-class ValueExpression:
-	def __init__(self):
-		...
-
-	def walk(self):
-		...
-
-	def __str__(self):
-		...
-
-def isFuncDef(name):
+def isDefinition(name):
 	return name[0] == ':'
 
 def walk(root, expressions):
 	for child in os.listdir(root):
 		fullpath = root + '/' + child
-		if isFuncDef(child):
-			expressions.append(Definition(child))
+		if isIntLit(child):
+			expressions.append(IntLit(fullpath))
+		elif isDefinition(child):
+			expressions.append(Definition(fullpath))
 
 def main():
 	root = "./test"
