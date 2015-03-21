@@ -1,22 +1,28 @@
-program : /* empty */
-  | expr
-  | func_def
+program 
+  : /* empty */
+  | expr program
+  | func_def program
+  ;
+
+val_expr
+  : ID
+  | NUM
   | func_call
+  | val_expr '<' val_expr
+  | val_expr '>' val_expr
+  | val_expr '==' val_expr
+  | val_expr '!=' val_expr
+  | val_expr '|' val_expr
+  | val_expr '&' val_expr
+  | val_expr '-' val_expr
+  | val_expr '+' val_expr
+  | val_expr '*' val_expr
+  | val_expr '\' val_expr
   ;
 
 expr
-  : ID
-  | NUM
-  | expr '<' expr
-  | expr '>' expr
-  | expr '==' expr
-  | expr '!=' expr
-  | expr '|' expr
-  | expr '&' expr
-  | expr '-' expr
-  | expr '+' expr
-  | expr '*' expr
-  | expr '\' expr
+  : val_expr 
+  | 'if' '?' val_expr expr 'else' expr
   ;
 
 func_def
@@ -24,7 +30,7 @@ func_def
   ;
 
 formals
-  : '_' ID formals;
+  : '_'ID formals;
   : /* empty */
   ;
 
