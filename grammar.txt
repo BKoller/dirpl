@@ -1,6 +1,12 @@
+program : /* empty */
+  | expr
+  | func_def
+  | func_call
+  ;
+
 expr
   : ID
-  | INT
+  | NUM
   | expr '<' expr
   | expr '>' expr
   | expr '==' expr
@@ -11,4 +17,22 @@ expr
   | expr '+' expr
   | expr '*' expr
   | expr '\' expr
+  ;
+
+func_def
+  : ':' ID formals
+  ;
+
+formals
+  : '_' ID formals;
+  : /* empty */
+  ;
+
+func_call
+  : ID args
+  ;
+
+args
+  : ID args
+  | INT args
   ;
