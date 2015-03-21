@@ -1,8 +1,6 @@
-from IntLit import IntLit
-from Var import Var
-from Definition import Definition
-from ValueExpression import ValueExpression
-from FuncCall import FuncCall
+from IntLit import *
+from Var import *
+from ValueExpression import *
 from Helpers import *
 import os
 
