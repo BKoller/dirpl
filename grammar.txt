@@ -1,0 +1,14 @@
+expr
+  : ID
+  | INT
+  | expr '<' expr
+  | expr '>' expr
+  | expr '==' expr
+  | expr '!=' expr
+  | expr '|' expr
+  | expr '&' expr
+  | expr '-' expr
+  | expr '+' expr
+  | expr '*' expr
+  | expr '\' expr
+  ;
