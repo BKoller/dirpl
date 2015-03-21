@@ -22,7 +22,7 @@ val_expr
 
 expr
   : val_expr 
-  | 'if' '?' val_expr expr 'else' expr
+  | 'if' val_expr expr  expr
   ;
 
 func_def
