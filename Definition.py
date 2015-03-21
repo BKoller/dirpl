@@ -11,6 +11,13 @@ class Definition:
 
 	def walk(self):
 		child = os.listdir(self.path)[0]
+		if isIntLit(child):
+			code = str(IntLit(fullpath))
+		elif isValueExpression(child):
+			code = str(ValueExpression(fullpath))
+		elif isFuncCall(child):
+			code = str(FuncCall(fullpath))
+
 
 
 	def __str__(self):
