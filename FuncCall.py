@@ -1,4 +1,7 @@
 from Helpers import *
+from IntLit import IntLit
+from Var import Var
+from ValueExpression import *
 import os
 
 class FuncCall:
@@ -28,3 +31,4 @@ class FuncCall:
 		code = self.functor + "("
 		code += ', '.join([str(e) for e in self.args])
 		code += ")"
+		return code

@@ -12,6 +12,7 @@ class Definition:
 
 	def walk(self):
 		child = os.listdir(self.path)[0]
+		fullpath = self.path + '/' + child
 		if isIntLit(child):
 			self.body = IntLit(fullpath)
 		elif isValueExpression(child):
