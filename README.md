@@ -2,8 +2,11 @@ Factorial Program
 ==================
 
 program/
+
 ├── fact()
+
 │   └── a
+
 │       └── 5
 └── :fact_n
     └── ifelse()
@@ -28,4 +31,3 @@ program/
                                 └── b
                                     └── 1
 
-25 directories, 0 files
