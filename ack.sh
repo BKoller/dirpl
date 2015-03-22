@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mkdir -p ':Ack_m_n/ifelse()/a/==/a/m'
+mkdir -p ':Ack_m_n/ifelse()/a/==/b/0'
+mkdir -p ':Ack_m_n/ifelse()/b/+/a/n'
+mkdir -p ':Ack_m_n/ifelse()/b/+/b/1'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/a/&/a/>/a/m'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/a/&/a/>/b/0'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/a/&/b/==/a/n'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/a/&/b/==/b/0'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/b/Ack()/a/-/a/m'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/b/Ack()/a/-/b/1'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/b/Ack()/b/1'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/c/Ack()/a/-/a/m'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/c/Ack()/a/-/b/1'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/c/Ack()/b/Ack()/a/m'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/c/Ack()/b/Ack()/b/-/a/n'
+mkdir -p ':Ack_m_n/ifelse()/c/ifelse()/c/Ack()/b/Ack()/b/-/b/1'
