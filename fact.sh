@@ -1,5 +1,9 @@
 #!/bin/bash
 
+mkdir program
+mkdir 'program/fact()'
+mkdir 'program/fact()/a'
+mkdir 'program/fact()/a/5'
 mkdir fact
 mkdir fact/:fact_n
 mkdir 'fact/:fact_n/ifelse()'
