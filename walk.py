@@ -2,7 +2,7 @@ from IntLit import *
 from Var import *
 from ValueExpression import *
 from Helpers import *
-import os
+import os, sys
 
 def walk(root):
 	for child in os.listdir(root):
@@ -25,8 +25,12 @@ def walk(root):
 			print('print(' + code + ')')
 
 def main():
-	root = "./test"
+	if len(sys.argv) != 2:
+		print('usage: ' + argv[0] + ' <program directory>')
+		return -1
+	root = sys.argv[1]
 	walk(root)
+	return 0
 
 if __name__ == "__main__":
 	main()

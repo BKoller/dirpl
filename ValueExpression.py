@@ -69,6 +69,7 @@ class Definition:
 		parts = path.split('/')[-1].split('_')
 		self.name = parts[0].lstrip(':')
 		self.formals = parts[1:]
+		self.cache = self.name + '.d'
 		self.walk()
 
 	def walk(self):
@@ -84,8 +85,14 @@ class Definition:
 			self.body = Var(fullpath)
 
 	def __str__(self):
+		formalstring = '(' + ','.join(self.formals)
+		if len(self.formals) > 0:
+			formalstring += ','
+		formalstring += ')'
 		code = 'def ' + self.name
-		code += '(' + ','.join(self.formals) + '): '
-		code += 'return ' 
-		code += str(self.body)
+		code += formalstring + ': \n'
+		code += '\tif not ' + formalstring + ' in ' + self.cache + ':\n\t\t'
+		code += self.cache + '[' + formalstring + '] = ' + str(self.body) + '\n\t'
+		code += 'return ' + self.cache + '[' + formalstring + ']\n'
+		code += self.cache + ' = {}'
 		return code
