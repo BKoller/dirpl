@@ -13,15 +13,15 @@ def walk(root):
 		fullpath = root + '/' + child
 		if isIntLit(child):
 			code = str(IntLit(fullpath))
-			print('print("' + code + '")')
+			print('print("> ' + code + '")')
 			print('print(' + code + ')')
 		elif isValueExpression(child):
 			code = str(ValueExpression(fullpath))
-			print('print("' + code + '")')
+			print('print("> ' + code + '")')
 			print('print(' + code + ')')
 		elif isFuncCall(child):
 			code = str(FuncCall(fullpath))
-			print('print("' + code + '")')
+			print('print("> ' + code + '")')
 			print('print(' + code + ')')
 
 def main():

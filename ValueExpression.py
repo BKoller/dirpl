@@ -61,7 +61,7 @@ class FuncCall:
 		else:
 			code = self.functor + '('
 			code += ', '.join([str(e) for e in self.args]) + ')'
-		return '(' + code + ')'
+		return code
 
 class Definition:
 	def __init__(self, path):
