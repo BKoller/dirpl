@@ -1,28 +1,34 @@
 Hackathon submission: http://hackbu-2015s.challengepost.com/submissions/34578-dirpl
 
-program/  
-├── fact()  
-│   └── a  
-│       └── 5  
-└── :fact_n  
-    └── ifelse()  
-        ├── a  
-        │   └── <=  
-        │       ├── a  
-        │       │   └── n  
-        │       └── b  
-        │           └── 1  
-        ├── b  
-        │   └── 1  
-        └── c  
-            └── *  
-                ├── a  
-                │   └── n  
-                └── b  
-                    └── fact()  
-                        └── a  
-                            └──    
-                                ├── a  
-                                │   └── n  
-                                └── b  
-                                    └── 1  
+To get started, run fact.sh.
+This will create a program with the following structure that calculates 
+the factorial of 5.
+The program can be executed by running "./dirpl program/"
+
+program/
+├── a
+│   └── fact()
+│       └── a
+│           └── 5
+└── :fact_n
+    └── ifelse()
+        ├── a
+        │   └── <=
+        │       ├── a
+        │       │   └── n
+        │       └── b
+        │           └── 1
+        ├── b
+        │   └── 1
+        └── c
+            └── *
+                ├── a
+                │   └── n
+                └── b
+                    └── fact()
+                        └── a
+                            └── -
+                                ├── a
+                                │   └── n
+                                └── b
+                                    └── 1
