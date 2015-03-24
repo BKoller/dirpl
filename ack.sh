@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p 'program/Ack()/a/3'
-mkdir -p 'program/Ack()/b/4'
+mkdir -p 'program/a/Ack()/a/3'
+mkdir -p 'program/a/Ack()/b/4'
 mkdir -p 'program/:Ack_m_n/ifelse()/a/==/a/m'
 mkdir -p 'program/:Ack_m_n/ifelse()/a/==/b/0'
 mkdir -p 'program/:Ack_m_n/ifelse()/b/+/a/n'

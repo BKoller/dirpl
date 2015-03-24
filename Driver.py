@@ -9,20 +9,25 @@ def walk(root):
 		fullpath = root + '/' + child
 		if isDefinition(child):
 			print(Definition(fullpath))
-	for child in os.listdir(root):
-		fullpath = root + '/' + child
-		if isIntLit(child):
-			code = str(IntLit(fullpath))
-			print('print("> ' + code + '")')
-			print('print(' + code + ')')
-		elif isValueExpression(child):
-			code = str(ValueExpression(fullpath))
-			print('print("> ' + code + '")')
-			print('print(' + code + ')')
-		elif isFuncCall(child):
-			code = str(FuncCall(fullpath))
-			print('print("> ' + code + '")')
-			print('print(' + code + ')')
+	expressions = os.listdir(root)
+	expressions.sort()
+	for child in expressions: 
+		if child.isalpha():
+			fullpath = root + '/' + child
+			child = os.listdir(fullpath)[0]
+			fullpath = fullpath + '/' + child
+			if isIntLit(child):
+				code = str(IntLit(fullpath))
+				print('print("> ' + code + '")')
+				print('print(' + code + ')')
+			elif isValueExpression(child):
+				code = str(ValueExpression(fullpath))
+				print('print("> ' + code + '")')
+				print('print(' + code + ')')
+			elif isFuncCall(child):
+				code = str(FuncCall(fullpath))
+				print('print("> ' + code + '")')
+				print('print(' + code + ')')
 
 def main():
 	if len(sys.argv) != 2:

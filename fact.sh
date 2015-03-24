@@ -1,9 +1,9 @@
 #!/bin/bash
 
 mkdir 'program'
-mkdir 'program/fact()'
-mkdir 'program/fact()/a'
-mkdir 'program/fact()/a/5'
+mkdir 'program/b/fact()'
+mkdir 'program/b/fact()/a'
+mkdir 'program/b/fact()/a/5'
 mkdir 'program/:fact_n'
 mkdir 'program/:fact_n/ifelse()'
 mkdir 'program/:fact_n/ifelse()/a'
