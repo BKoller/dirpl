@@ -1,3 +1,12 @@
+/* 
+ * The purpose of this document is to aid in the
+ * designing of the dirpl programming language.
+ * This grammar file isn't very useful if you're
+ * trying to learn the syntax of dirpl.  It does
+ * a poor job of expressing the 2-dimensional aspect
+ * of the language.
+ */
+
 program 
   : /* empty */
   | expr program
