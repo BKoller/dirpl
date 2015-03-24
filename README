@@ -1,5 +1,7 @@
 Hackathon submission: http://hackbu-2015s.challengepost.com/submissions/34578-dirpl
 
+Dependencies: dirpl should work on any Unix system with python 3 installed.
+
 To get started, run fact.sh.
 This will create a program with the following structure that calculates 
 the factorial of 5.
