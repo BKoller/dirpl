@@ -4,25 +4,25 @@ program
   | func_def program
   ;
 
-val_expr
+expr
   : ID
   | NUM
   | func_call
-  | val_expr '<' val_expr
-  | val_expr '>' val_expr
-  | val_expr '==' val_expr
-  | val_expr '!=' val_expr
-  | val_expr '|' val_expr
-  | val_expr '&' val_expr
-  | val_expr '-' val_expr
-  | val_expr '+' val_expr
-  | val_expr '*' val_expr
-  | val_expr '\' val_expr
-  ;
-
-expr
-  : val_expr 
-  | 'if' val_expr expr  expr
+  | expr '<' expr
+  | expr '>' expr
+  | expr '<=' expr
+  | expr '>=' expr
+  | expr '==' expr
+  | expr '!=' expr
+  | expr '|' expr
+  | expr '&' expr
+  | expr '-' expr
+  | expr '+' expr
+  | expr '*' expr
+  | expr '\' expr
+  | expr '\\' expr
+  | expr '%' expr
+  | 'ifelse()' expr expr expr
   ;
 
 func_def
