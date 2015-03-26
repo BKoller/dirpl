@@ -117,8 +117,9 @@ class ListLit:
 		self.walk()
 	
 	def walk(self):
-		children = os.listdir(self.path)
+		children = [int(c) for c in os.listdir(self.path)]
 		children.sort()
+		children = [str(c) for c in children]
 		for child in children:
 			fullpath = self.path + '/' + child
 			child = os.listdir(fullpath)[0]
