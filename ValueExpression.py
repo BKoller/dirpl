@@ -4,7 +4,6 @@ from Var import *
 import os
 
 class ValueExpression:	
-
 	def __init__(self, path):
 		self.path = path
 		self.op = BIN_OPS[path.split('/')[-1]]
@@ -36,6 +35,9 @@ class FuncCall:
 		self.functor = path.split('/')[-1][:-2]
 		self.args = []
 		self.walk()
+		self.toStrings = {
+				'ifelse':self.ifelseStr,
+				}
 	
 	def walk(self):
 		children = os.listdir(self.path)
@@ -52,16 +54,22 @@ class FuncCall:
 				self.args.append(FuncCall(fullpath))
 			elif isVar(child):
 				self.args.append(Var(fullpath))
+			elif isListLit(child):
+				self.args.append(ListLit(fullpath))
+
+	def ifelseStr(self):
+		code = str(self.args[1]) + ' if '
+		code += str(self.args[0]) + ' else '
+		code += str(self.args[2])
+		return code
+
+	def definedStr(self):
+		code = self.functor + '('
+		code += ', '.join([str(e) for e in self.args]) + ')'
+		return code
 
 	def __str__(self):
-		if self.functor == 'ifelse':
-			code = str(self.args[1]) + ' if '
-			code += str(self.args[0]) + ' else '
-			code += str(self.args[2])
-		else:
-			code = self.functor + '('
-			code += ', '.join([str(e) for e in self.args]) + ')'
-		return code
+		return self.toStrings.get(self.functor, self.definedStr)()
 
 class Definition:
 	def __init__(self, path):
@@ -83,6 +91,8 @@ class Definition:
 			self.body = FuncCall(fullpath)
 		elif isVar(child):
 			self.body = Var(fullpath)
+		elif isListLit(child):
+			self.body = ListLit(fullpath)
 
 	def __str__(self):
 		formalstring = '(' + ','.join(self.formals)
@@ -91,8 +101,37 @@ class Definition:
 		formalstring += ')'
 		code = 'def ' + self.name
 		code += formalstring + ': \n'
-		code += '\tif not ' + formalstring + ' in ' + self.cache + ':\n\t\t'
+		code += '\ttry:\n'
+		code += '\t\tif not ' + formalstring + ' in ' + self.cache + ':\n\t\t\t'
 		code += self.cache + '[' + formalstring + '] = ' + str(self.body) + '\n\t'
+		code += 'except:\n\t\t'
+		code += 'return ' + str(self.body) + '\n\t'
 		code += 'return ' + self.cache + '[' + formalstring + ']\n'
 		code += self.cache + ' = {}'
+		return code
+
+class ListLit:
+	def __init__(self, path):
+		self.path = path
+		self.elems = []
+		self.walk()
+	
+	def walk(self):
+		children = os.listdir(self.path)
+		children.sort()
+		for child in children:
+			fullpath = self.path + '/' + child
+			child = os.listdir(fullpath)[0]
+			fullpath = fullpath + '/' + child
+			if isIntLit(child):
+				self.elems.append(IntLit(fullpath))
+			elif isValueExpression(child):
+				self.elems.append(ValueExpression(fullpath))
+			elif isFuncCall(child):
+				self.elems.append(FuncCall(fullpath))
+			elif isVar(child):
+				self.elems.append(Var(fullpath))
+
+	def __str__(self):
+		code = '[' + ', '.join([str(e) for e in self.elems]) + ']'
 		return code

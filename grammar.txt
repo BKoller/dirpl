@@ -32,10 +32,22 @@ expr
   | expr '\\' expr
   | expr '%' expr
   | 'ifelse()' expr expr expr
+  | 'count()' list_expr
+  ;
+
+list_expr
+  : 'join()' list_expr list_expr
+  | 'part()' list_expr expr
+  | 'first()' list_expr
+  | 'last()' list_expr
+  ;
+
+list
+  : '@'ID args
   ;
 
 func_def
-  : ':' ID formals
+  : ':'ID formals
   ;
 
 formals
@@ -48,6 +60,5 @@ func_call
   ;
 
 args
-  : ID args
-  | INT args
+  : expr args
   ;

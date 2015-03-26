@@ -29,11 +29,19 @@ def walk(root):
 				print('print("> ' + code + '")')
 				print('print(' + code + ')')
 
+def makeStdLib():
+	print('count = len')
+	print('def join(l1, l2): return l1 + l2')
+	print('def part(l, i, j): return l[i:j]')
+	print('def first(l): return l[0]')
+	print('def last(l): return l[-1]')
+
 def main():
 	if len(sys.argv) != 2:
 		print('usage: ' + argv[0] + ' <program directory>')
 		return -1
 	root = sys.argv[1]
+	makeStdLib()
 	walk(root)
 	return 0
 
