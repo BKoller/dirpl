@@ -12,7 +12,7 @@ Tired off having to use text editors and IDEs to write code?
 * **Numerical, boolean and list types** - The  basics.
 * **Recursion** - An essential feature of any functional language.
 * **Automatic memoization** - Yay for referential transparency.
-* **High hard drive utilization** - With a filesystem block size of 4K, it doesn't take much **dirpl** code to fill up a hard drive.
+* **High hard drive utilization** - With a filesystem block size of 4K, it doesn't take much **Dirpl** code to fill up a hard drive.
 
 #Dependencies
 **Dirpl** should work on any Unix system with Python 3 installed.
