@@ -1,10 +1,11 @@
 #dirpl
 
 ##What is dirpl?
-Think Haskell is to easy?
+dirpl is the programming language of the future.
+Think Haskell is too easy?
 Worried that your hard drive isn't working hard enough?
 Tired off having to use text editors and IDEs to write code?
-dirpl is a programming language that solves all of these problems.
+dirpl solves all of these problems and more.
 
 #Dependencies
 dirpl should work on any Unix system with Python 3 installed.
