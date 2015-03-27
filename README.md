@@ -7,6 +7,12 @@ Worried that your hard drive isn't working hard enough?
 Tired off having to use text editors and IDEs to write code?
 **Dirpl** solves all of these problems and more.
 
+##Features
+**Dirpl** is a functional programming language whose features include
+* **Numerical, boolean and list types** - The  basics.
+* **Recursion** - An essential feature of any functional language.
+* **Automatic memoization** - Yay for referential transparency.
+
 #Dependencies
 **Dirpl** should work on any Unix system with Python 3 installed.
 
