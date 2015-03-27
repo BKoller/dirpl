@@ -28,12 +28,12 @@ def walk(root):
 				code = str(FuncCall(fullpath))
 				print('print("> ' + code + '")')
 				print('print(' + code + ')')
-			elif isLambda(child):
-				l = Lambda(fullpath)
-				code = str(l)
-				print('print("> ' + code + '")')
-				if l.isCall():
-					print('print(' + code + ')')
+		elif isLambda(child):
+			l = Lambda(fullpath)
+			code = str(l)
+			print('print("> ' + code + '")')
+			if l.isCall:
+				print('print(' + code + ')')
 
 def makeStdLib():
 	print('count = len')
@@ -41,7 +41,8 @@ def makeStdLib():
 	print('def part(l, i, j): return l[i:j]')
 	print('def first(l): return l[0]')
 	print('def last(l): return l[-1]')
-
+	print('def tail(l): return l[1:]')
+	
 def main():
 	if len(sys.argv) != 2:
 		print('usage: ' + argv[0] + ' <program directory>')

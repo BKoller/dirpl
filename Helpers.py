@@ -9,7 +9,7 @@ def isIntLit(name):
 def isDefinition(name):
 	if name[1:] in RESERVED or name[1:] in BIN_OPS:
 		return False
-	return name[0] == ':'
+	return name[0] == ':' and name[1] != '_'
 
 def isFuncCall(name):
 	return name.endswith('()')
@@ -22,3 +22,6 @@ def isVar(name):
 
 def isListLit(name):
 	return name == '@'
+
+def isLambda(name):
+	return name[0] == ':' and name[1] == '_'
