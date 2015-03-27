@@ -4,7 +4,7 @@ BIN_OPS = {'\\\\':'//', '%':'%', '<=':'<=', '>=': '>=','<':'<', '>': '>', '==':'
 RESERVED = ('ifelse', 'count', 'join', 'part', 'first', 'last')
 
 def isIntLit(name):
-	return name.isdigit()
+	return name.isdigit() or (name[0] == '-' and name[1:].isdigit())
 
 def isDefinition(name):
 	if len(name) == 1:

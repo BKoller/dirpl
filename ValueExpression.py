@@ -56,6 +56,8 @@ class FuncCall:
 				self.args.append(Var(fullpath))
 			elif isListLit(child):
 				self.args.append(ListLit(fullpath))
+			elif isLambda(child):
+				self.args.append(Lambda(fullpath))
 
 	def ifelseStr(self):
 		code = str(self.args[1]) + ' if '
