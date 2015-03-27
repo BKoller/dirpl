@@ -11,7 +11,7 @@ def walk(root):
 			print(Definition(fullpath))
 	expressions = os.listdir(root)
 	expressions.sort()
-	for child in expressions: 
+	for child in expressions:
 		if child.isalpha():
 			fullpath = root + '/' + child
 			child = os.listdir(fullpath)[0]
