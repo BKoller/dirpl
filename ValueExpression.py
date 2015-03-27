@@ -3,7 +3,7 @@ from IntLit import *
 from Var import *
 import os
 
-class ValueExpression:	
+class ValueExpression:
 	def __init__(self, path):
 		self.path = path
 		self.op = BIN_OPS[path.split('/')[-1]]
@@ -38,7 +38,7 @@ class FuncCall:
 		self.toStrings = {
 				'ifelse':self.ifelseStr,
 				}
-	
+
 	def walk(self):
 		children = os.listdir(self.path)
 		children.sort()
@@ -75,7 +75,7 @@ class FuncCall:
 
 class Definition:
 	def __init__(self, path):
-		self.path = path 
+		self.path = path
 		parts = path.split('/')[-1].split('_')
 		self.name = parts[0].lstrip(':')
 		self.formals = parts[1:]
@@ -117,7 +117,7 @@ class ListLit:
 		self.path = path
 		self.elems = []
 		self.walk()
-	
+
 	def walk(self):
 		children = [int(c) for c in os.listdir(self.path)]
 		children.sort()
@@ -141,7 +141,7 @@ class ListLit:
 
 class Lambda:
 	def __init__(self, path):
-		self.path = path 
+		self.path = path
 		parts = path.split('/')[-1].split('_')
 		self.formals = parts[1:]
 		self.args = []
@@ -163,7 +163,7 @@ class Lambda:
 		elif isVar(child):
 			self.body = Var(fullpath)
 		elif isListLit(child):
-			self.body = ListLit(fullpath)		
+			self.body = ListLit(fullpath)
 		if self.isCall:
 			fullpath = self.path + '/' + children[1]
 			children = os.listdir(fullpath)
