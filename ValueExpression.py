@@ -56,6 +56,8 @@ class FuncCall:
 				self.args.append(Var(fullpath))
 			elif isListLit(child):
 				self.args.append(ListLit(fullpath))
+			elif isLambda(child):
+				self.args.append(Lambda(fullpath))
 
 	def ifelseStr(self):
 		code = str(self.args[1]) + ' if '
@@ -135,4 +137,53 @@ class ListLit:
 
 	def __str__(self):
 		code = '[' + ', '.join([str(e) for e in self.elems]) + ']'
+		return code
+
+class Lambda:
+	def __init__(self, path):
+		self.path = path 
+		parts = path.split('/')[-1].split('_')
+		self.formals = parts[1:]
+		self.args = []
+		self.walk()
+
+	def walk(self):
+		children = os.listdir(self.path)
+		children.sort()
+		self.isCall = True if len(children) == 2 else False
+		fullpath = self.path + '/' + children[0]
+		child = os.listdir(fullpath)[0]
+		fullpath = fullpath + '/' + child
+		if isIntLit(child):
+			self.body = IntLit(fullpath)
+		elif isValueExpression(child):
+			self.body = ValueExpression(fullpath)
+		elif isFuncCall(child):
+			self.body = FuncCall(fullpath)
+		elif isVar(child):
+			self.body = Var(fullpath)
+		elif isListLit(child):
+			self.body = ListLit(fullpath)		
+		if self.isCall:
+			fullpath = self.path + '/' + children[1]
+			children = os.listdir(fullpath)
+			children.sort()
+			for child in children:
+				path = fullpath + '/' + child
+				child = os.listdir(path)[0]
+				path = path + '/' + child
+				if isIntLit(child):
+					self.args.append(IntLit(path))
+				elif isValueExpression(child):
+					self.args.append(ValueExpression(path))
+				elif isFuncCall(child):
+					self.args.append(Var(child))
+					self.args.append(Var(path))
+				elif isListLit(child):
+					self.args.append(ListLit(path))
+	def __str__(self):
+		formalstring = ','.join(self.formals)
+		code = '(lambda ' + formalstring + ' : ' + str(self.body) + ')'
+		if self.isCall:
+			code += '(' + ','.join([str(arg) for arg in self.args]) + ')'
 		return code

@@ -32,7 +32,7 @@ def walk(root):
 				l = Lambda(fullpath)
 				code = str(l)
 				print('print("> ' + code + '")')
-				if l.isCall():
+				if l.isCall:
 					print('print(' + code + ')')
 
 def makeStdLib():
@@ -41,7 +41,9 @@ def makeStdLib():
 	print('def part(l, i, j): return l[i:j]')
 	print('def first(l): return l[0]')
 	print('def last(l): return l[-1]')
-
+	print('def tail(l): return l[1:]')
+	print('def map(f, l): return [f(e) for e in l]')
+	
 def main():
 	if len(sys.argv) != 2:
 		print('usage: ' + argv[0] + ' <program directory>')

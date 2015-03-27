@@ -4,12 +4,14 @@ BIN_OPS = {'\\\\':'//', '%':'%', '<=':'<=', '>=': '>=','<':'<', '>': '>', '==':'
 RESERVED = ('ifelse', 'count', 'join', 'part', 'first', 'last')
 
 def isIntLit(name):
-	return name.isdigit()
+	return name.isdigit() or (name[0] == '-' and name[1:].isdigit())
 
 def isDefinition(name):
+	if len(name) == 1:
+		return False
 	if name[1:] in RESERVED or name[1:] in BIN_OPS:
 		return False
-	return name[0] == ':'
+	return name[0] == ':' and name[1] != '_'
 
 def isFuncCall(name):
 	return name.endswith('()')
@@ -22,3 +24,6 @@ def isVar(name):
 
 def isListLit(name):
 	return name == '@'
+
+def isLambda(name):
+	return name == ':' or (name[0] == ':' and name[1] == '_')
