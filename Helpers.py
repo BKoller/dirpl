@@ -17,7 +17,7 @@ def isFuncCall(name):
 	return name.endswith('()')
 
 def isValueExpression(name):
-	return name in BIN_OPS 
+	return name in BIN_OPS
 
 def isVar(name):
 	return name.isalpha()

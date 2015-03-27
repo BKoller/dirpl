@@ -43,7 +43,7 @@ def makeStdLib():
 	print('def last(l): return l[-1]')
 	print('def tail(l): return l[1:]')
 	print('def map(f, l): return [f(e) for e in l]')
-	
+
 def main():
 	if len(sys.argv) != 2:
 		print('usage: ' + argv[0] + ' <program directory>')
