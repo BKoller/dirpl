@@ -7,6 +7,8 @@ def isIntLit(name):
 	return name.isdigit()
 
 def isDefinition(name):
+	if len(name) == 1:
+		return False
 	if name[1:] in RESERVED or name[1:] in BIN_OPS:
 		return False
 	return name[0] == ':' and name[1] != '_'
@@ -24,4 +26,4 @@ def isListLit(name):
 	return name == '@'
 
 def isLambda(name):
-	return name[0] == ':' and name[1] == '_'
+	return name == ':' or (name[0] == ':' and name[1] == '_')
