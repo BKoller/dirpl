@@ -21,7 +21,6 @@ To get started with a sample program, run fact.sh.
 This will create a program that calculates the factorial of 5.
 To execute it, run "./**Dirpl** program/".
 
-#Documentation
-Coming soon.
-
+#Disclaimer
+**Dirpl** was created for the Hack BU 2015 Hackathon.  Due to the nature of hackathons, the code is hacky and does almost no semantic checking.
 [Hackathon submission](http://hackbu-2015s.challengepost.com/submissions/34578-**Dirpl**)
